@@ -1,3 +1,46 @@
+// Fix viewport height for iOS Safari (prevents browser UI from appearing/disappearing)
+// This calculates the real viewport height and stores it in a CSS variable
+function setViewportHeight() {
+    // Get the real viewport height
+    const vh = window.innerHeight * 0.01;
+    // Set the CSS variable
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set initial viewport height
+setViewportHeight();
+
+// Update on resize and orientation change
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', () => {
+    // Small delay to ensure orientation change is complete
+    setTimeout(setViewportHeight, 100);
+});
+
+// Prevent iOS Safari from showing/hiding browser UI on scroll
+// This helps maintain consistent viewport height
+let lastScrollTop = 0;
+let ticking = false;
+
+function preventBrowserUI() {
+    // Only apply on iOS devices
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    if (isIOS) {
+        // Update viewport height on scroll to account for browser UI changes
+        setViewportHeight();
+    }
+    
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(preventBrowserUI);
+        ticking = true;
+    }
+}, { passive: true });
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;

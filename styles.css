@@ -9,6 +9,8 @@
     --text-color: #ffffff;
     --accent-color: #ffffff;
     --section-bg: #111111;
+    /* Viewport height variable for iOS Safari fix */
+    --vh: 1vh;
 }
 
 html {
@@ -267,8 +269,8 @@ body.about-page-body .about-intro {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -474,7 +476,7 @@ body.about-page-body .about-intro {
 
 /* Sections */
 .section {
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     padding: 8rem 4rem;
@@ -654,7 +656,7 @@ body.about-page-body .about-intro {
     padding-top: 6rem;
     padding-bottom: 1rem;
     overflow: visible;
-    max-height: 100vh;
+    max-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
 }
@@ -1571,13 +1573,13 @@ body.about-page-body .scroll-indicator-sidebar {
 .about-page {
     padding-top: 0;
     padding-bottom: 4rem;
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 /* About Intro Section - Same as index about section */
 .about-intro.section {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 100);
     position: relative;
     overflow: hidden;
     /* Match EXACT positioning of about section */
@@ -1700,7 +1702,7 @@ body.about-page-body .scroll-indicator-sidebar {
 }
 
 .about-section {
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     padding: 8rem 4rem;
     position: relative;
     display: flex;
@@ -2026,10 +2028,10 @@ body.work-page-body .work-page * {
     padding-left: 4rem;
     padding-right: 4rem;
     overflow: visible;
-    max-height: 100vh;
+    max-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .work-intro .works-container {
@@ -2148,7 +2150,7 @@ body.work-page-body .work-page * {
 
 /* Work Section (for detailed content) */
 .work-section {
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     padding: 8rem 4rem;
     position: relative;
     display: flex;
