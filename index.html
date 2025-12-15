@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Meus Trabalhos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Prefetch work pages for instant navigation -->
+    <link rel="prefetch" href="work.html?project=setyou&expand=true" as="document">
+    <link rel="prefetch" href="work.html?project=vumbora&expand=true" as="document">
+    <link rel="prefetch" href="work.html?project=project3&expand=true" as="document">
+    <script>
+        // Handle hash navigation immediately, before page renders
+        // This prevents the visible scroll animation
+        (function() {
+            // Disable automatic scroll restoration
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            
+            if (window.location.hash) {
+                const hash = window.location.hash;
+                
+                // Set global flag immediately to prevent animations
+                // This will be used by script.js's IntersectionObserver
+                window.isNavigatingFromHash = true;
+                
+                // Add data attribute to disable smooth scroll via CSS
+                document.documentElement.setAttribute('data-hash-navigation', 'true');
+                
+                // Store hash and remove it temporarily to prevent browser auto-scroll
+                const urlWithoutHash = window.location.href.split('#')[0];
+                history.replaceState(null, null, urlWithoutHash);
+                
+                // Function to disable animations for target section
+                function disableAnimations() {
+                    if (hash === '#about') {
+                        const aboutSection = document.querySelector('#about');
+                        if (aboutSection) {
+                            const slideInElements = aboutSection.querySelectorAll('.slide-in-left, .slide-in-right');
+                            slideInElements.forEach(element => {
+                                // Add animate class immediately to show elements without animation
+                                element.classList.add('animate');
+                                // Also set inline styles to ensure they're visible immediately
+                                element.style.opacity = '1';
+                                element.style.transform = 'translateX(0)';
+                                // Prevent transition to avoid any animation
+                                element.style.transition = 'none';
+                            });
+                        }
+                    }
+                }
+                
+                // Function to scroll to section - must be synchronous and instant
+                function scrollToSection() {
+                    // Handle hash with project ID (e.g., #works-projectId)
+                    let actualHash = hash;
+                    let projectId = null;
+                    
+                    if (hash.startsWith('#works-')) {
+                        actualHash = '#works';
+                        projectId = hash.replace('#works-', '');
+                        // Store project ID globally so slider can use it
+                        window.targetProjectId = projectId;
+                    }
+                    
+                    const targetSection = document.querySelector(actualHash);
+                    if (targetSection) {
+                        // Disable animations before scrolling
+                        disableAnimations();
+                        
+                        // Use offsetTop directly - it gives the position from top of document
+                        // The section's padding-top (10rem) will create the visual spacing
+                        // This matches how the about-intro section appears on about.html
+                        const sectionTop = targetSection.offsetTop;
+                        
+                        // Force scroll instantly - no animation, multiple methods for compatibility
+                        if (document.documentElement) {
+                            document.documentElement.scrollTop = sectionTop;
+                        }
+                        if (document.body) {
+                            document.body.scrollTop = sectionTop;
+                        }
+                        window.scrollTo(0, sectionTop);
+                        
+                        // Restore hash in URL (with project ID if present)
+                        history.replaceState(null, null, hash);
+                        
+                        // Remove data attribute after a short delay
+                        setTimeout(() => {
+                            document.documentElement.removeAttribute('data-hash-navigation');
+                        }, 100);
+                    }
+                }
+                
+                // Try to scroll as early as possible
+                if (document.body) {
+                    // Body already exists, scroll immediately
+                    scrollToSection();
+                } else {
+                    // Wait for body to exist
+                    const checkBody = setInterval(function() {
+                        if (document.body) {
+                            clearInterval(checkBody);
+                            scrollToSection();
+                        }
+                    }, 1);
+                    
+                    // Safety timeout
+                    setTimeout(function() {
+                        clearInterval(checkBody);
+                        if (document.body) {
+                            scrollToSection();
+                        }
+                    }, 100);
+                }
+                
+                // Also try on DOMContentLoaded as backup
+                document.addEventListener('DOMContentLoaded', function() {
+                    scrollToSection();
+                    // Disable animations again as backup
+                    disableAnimations();
+                }, { once: true });
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home" class="nav-link nav-link-left">DESENDEV</a>
+                <a href="#works" class="nav-link">WORKS</a>
+                <a href="#about" class="nav-link">ABOUT ME</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator Sidebar -->
+    <div class="scroll-indicator-sidebar">
+        <div class="scroll-indicator-dot active" data-section="home"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="works"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="about"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="contact"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">DESEN</span>
+                <span class="title-line">DEV</span>
+            </h1>
+            <p class="hero-subtitle">
+                desenvolvedor full-stack /<br>
+                analista de dados.
+            </p>
+            <p class="hero-label">PORTFOLIO</p>
+        </div>
+
+        <!-- Animated Elements -->
+        <div class="animated-elements">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+            <div class="cloud cloud-5"></div>
+            <div class="moon"></div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>SCROLL DOWN</span>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works section">
+        <div class="works-container">
+            <h2 class="section-title slide-in-right">Meus Trabalhos</h2>
+            
+            <div class="works-slider">
+                <div class="slider-wrapper">
+                    <div class="slides-container">
+                        <!-- Slide 1 -->
+                        <div class="work-slide active" data-work-id="setyou">
+                            <div class="work-slide-content">
+                                <div class="work-slide-left slide-in-left">
+                                    <h3 class="work-title">SetYou</h3>
+                                    <p class="work-subtitle">Loja virtual completa hospedada no Shopify</p>
+                                    <div class="work-tags">
+                                        <span class="work-tag">HTML</span>
+                                        <span class="work-tag">CSS</span>
+                                        <span class="work-tag">JavaScript</span>
+                                        <span class="work-tag">Vue</span>
+                                        <span class="work-tag">React</span>
+                                    </div>
+                                    <a href="work.html?project=setyou&expand=true" class="show-more-btn work-show-more">Show me more</a>
+                                </div>
+                                <div class="work-slide-right slide-in-right">
+                                    <img src="images/mockup-setyou.png" alt="SetYou" onerror="this.parentElement.innerHTML='<div class=\'work-image-placeholder\'><span>Imagem do Projeto</span></div>'">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="work-slide" data-work-id="vumbora">
+                            <div class="work-slide-content">
+                                <div class="work-slide-left slide-in-left">
+                                    <h3 class="work-title">Vumbora</h3>
+                                    <p class="work-subtitle">Passeios turísticos</p>
+                                    <div class="work-tags">
+                                        <span class="work-tag">HTML</span>
+                                        <span class="work-tag">CSS</span>
+                                        <span class="work-tag">JavaScript</span>
+                                        <span class="work-tag">PHP</span>
+                                    </div>
+                                    <a href="work.html?project=vumbora&expand=true" class="show-more-btn work-show-more">Show me more</a>
+                                </div>
+                                <div class="work-slide-right slide-in-right">
+                                    <img src="images/mockup-vumbora.png" alt="Vumbora" onerror="this.parentElement.innerHTML='<div class=\'work-image-placeholder\'><span>Imagem do Projeto</span></div>'">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="work-slide" data-work-id="project3">
+                            <div class="work-slide-content">
+                                <div class="work-slide-left slide-in-left">
+                                    <h3 class="work-title">Projeto 3</h3>
+                                    <p class="work-subtitle">Descrição do terceiro projeto desenvolvido</p>
+                                    <div class="work-tags">
+                                        <span class="work-tag">Next.js</span>
+                                        <span class="work-tag">GraphQL</span>
+                                        <span class="work-tag">AWS</span>
+                                    </div>
+                                    <a href="work.html?project=project3&expand=true" class="show-more-btn work-show-more">Show me more</a>
+                                </div>
+                                <div class="work-slide-right slide-in-right">
+                                    <div class="work-image-placeholder">
+                                        <span>Imagem do Projeto</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Controls -->
+                    <div class="slider-controls">
+                        <button class="slider-btn slider-btn-prev" aria-label="Projeto anterior">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                        <div class="slider-dots">
+                            <span class="slider-dot active" data-slide="0"></span>
+                            <span class="slider-dot" data-slide="1"></span>
+                            <span class="slider-dot" data-slide="2"></span>
+                        </div>
+                        <button class="slider-btn slider-btn-next" aria-label="Próximo projeto">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about section">
+        <div class="section-content">
+            <h2 class="section-title slide-in-left">Sobre</h2>
+            <p class="section-subtitle slide-in-right">
+                Transformo ideias em soluções digitais<br>
+                que geram resultados reais.
+            </p>
+            <p class="about-brief slide-in-left">
+                Sou <strong>Denes Santos</strong>, formado em Engenharia de Petróleo e hoje atuo como <strong>Desenvolvedor Full-Stack</strong> e <strong>Analista de Dados</strong>. Combino conhecimento técnico sólido com visão estratégica para criar soluções que realmente fazem a diferença.
+            </p>
+            <a href="about.html" class="show-more-btn slide-in-right">Show me more</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="section-content">
+            <h2 class="section-title slide-in-right">Get In Touch</h2>
+            <div class="contact-info">
+                <a href="mailto:desen.develop@gmail.com" class="contact-link slide-in-left">desen.develop@gmail.com</a>
+                <a href="https://wa.me/5511977100066?text=Olá, vim através do DESENDEV e quero saber mais" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp-link slide-in-right">
+                    <svg class="whatsapp-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/denes-santos-36a453217/" target="_blank" rel="noopener noreferrer" class="contact-link slide-in-right">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

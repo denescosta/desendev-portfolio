@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Denes Santos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="about-page-body">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link nav-link-left">DESENDEV</a>
+                <a href="index.html#works" class="nav-link">WORKS</a>
+                <a href="about.html" class="nav-link active">ABOUT ME</a>
+                <a href="index.html#contact" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator Sidebar - Will fade out smoothly -->
+    <div class="scroll-indicator-sidebar" id="page-scroll-indicator">
+        <div class="scroll-indicator-dot" data-section="home"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="works"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot active" data-section="about"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="contact"></div>
+    </div>
+
+    <!-- About Page Content -->
+    <main class="about-page">
+        <!-- Initial Section - Same as index about section -->
+        <section class="about-intro section" id="about-intro">
+            <a href="index.html#about" class="back-arrow" id="back-arrow" style="display: none;" onclick="handleBackArrowClick(event)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <div class="section-content">
+                <h2 class="section-title">Sobre</h2>
+                <p class="section-subtitle">
+                    Transformo ideias em soluções digitais<br>
+                    que geram resultados reais.
+                </p>
+                <p class="about-brief">
+                    Sou <strong>Denes Santos</strong>, formado em Engenharia de Petróleo e hoje atuo como <strong>Desenvolvedor Full-Stack</strong> e <strong>Analista de Dados</strong>. Combino conhecimento técnico sólido com visão estratégica para criar soluções que realmente fazem a diferença.
+                </p>
+                <a href="about.html" class="show-more-btn slide-in-right animate" id="intro-show-more" style="opacity: 1; transform: translateX(0px); visibility: visible;">Show me more</a>
+            </div>
+            <div class="scroll-down-indicator" id="scroll-indicator" style="display: none;">
+                <span>SCROLL DOWN</span>
+            </div>
+        </section>
+
+        <!-- Section 01 - WHO I AM -->
+        <section class="about-section">
+            <div class="about-section-content">
+                <div class="about-personal">
+                    <h3 class="about-name">DENES SANTOS</h3>
+                    <p class="about-bio">
+                        Formado em Engenharia de Petróleo, encontrei minha verdadeira paixão na tecnologia. Após me formar, iniciei uma transição de carreira que me levou ao mundo do desenvolvimento e análise de dados.
+                    </p>
+                    <p class="about-bio">
+                        Hoje, atuo como <strong>Desenvolvedor Full-Stack</strong> e <strong>Analista de Dados</strong>, combinando minha formação analítica com habilidades técnicas modernas. Minha experiência em engenharia me trouxe uma abordagem focada em resultados e resolução de problemas, enquanto minha paixão por tecnologia me permite criar soluções inovadoras que geram valor real para os negócios.
+                    </p>
+                    <p class="about-bio">
+                        Acredito que a tecnologia deve ser acessível e útil, transformando ideias complexas em soluções simples e eficientes. Trabalho com as principais tecnologias do mercado para entregar projetos que não apenas funcionam, mas que realmente fazem a diferença.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02 - PASSION -->
+        <section class="about-section">
+            <div class="about-section-content">
+                <h2 class="about-section-title">PASSION</h2>
+                <div class="passion-grid">
+                    <div class="passion-item">
+                        <div class="passion-icon">design</div>
+                        <h3 class="passion-title">DESIGN</h3>
+                        <p class="passion-text">
+                            O design é a ponte entre a funcionalidade e a experiência do usuário. Acredito que um bom design não é apenas estético, mas sim uma ferramenta que torna produtos e serviços mais intuitivos e eficientes. Trabalho para criar interfaces que não apenas impressionam visualmente, mas que realmente facilitam a vida dos usuários e geram resultados para os negócios.
+                        </p>
+                    </div>
+                    <div class="passion-item">
+                        <div class="passion-icon">technology</div>
+                        <h3 class="passion-title">TECHNOLOGY</h3>
+                        <p class="passion-text">
+                            A tecnologia tem o poder de transformar o mundo e a vida das pessoas. Como desenvolvedor, busco sempre me manter atualizado com as últimas tendências e ferramentas do mercado. Acredito que a inovação tecnológica, quando bem aplicada, pode resolver problemas complexos e criar oportunidades antes inimagináveis. Minha missão é usar a tecnologia para criar soluções que realmente importam.
+                        </p>
+                    </div>
+                    <div class="passion-item">
+                        <div class="passion-icon">story</div>
+                        <h3 class="passion-title">STORY</h3>
+                        <p class="passion-text">
+                            Toda solução tem uma história por trás. Acredito que contar histórias através do código, do design e dos dados é fundamental para criar conexões significativas. Cada projeto que desenvolvo carrega uma narrativa - desde a identificação do problema até a solução final. Entender e comunicar essas histórias é essencial para criar produtos que ressoam com as pessoas e geram impacto real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03 - SKILL SET -->
+        <section class="about-section">
+            <div class="about-section-content">
+                <h2 class="about-section-title">SKILL SET</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">JavaScript</span>
+                            <h4 class="skill-name">JavaScript</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">3 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">React</span>
+                            <h4 class="skill-name">React</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">2 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">Node.js</span>
+                            <h4 class="skill-name">Node.js</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">2 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">Python</span>
+                            <h4 class="skill-name">Python</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">2 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">SQL</span>
+                            <h4 class="skill-name">SQL</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">2 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">HTML/CSS</span>
+                            <h4 class="skill-name">HTML/CSS</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">3 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">TypeScript</span>
+                            <h4 class="skill-name">TypeScript</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">1 ANO</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-icon">Git</span>
+                            <h4 class="skill-name">Git</h4>
+                        </div>
+                        <div class="skill-level">
+                            <span class="skill-time">3 ANOS</span>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Handle back arrow click to ensure proper scroll to #about section
+        function handleBackArrowClick(event) {
+            event.preventDefault();
+            
+            // Navigate to the page with hash
+            // The script.js on index.html will handle the scroll to #about
+            // when the page loads (it checks for window.location.hash)
+            window.location.href = 'index.html#about';
+        }
+        
+        // Transition animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const introSection = document.getElementById('about-intro');
+            const showMoreBtn = document.getElementById('intro-show-more');
+            const scrollIndicatorSidebar = document.getElementById('page-scroll-indicator');
+            const backArrow = document.getElementById('back-arrow');
+            const scrollIndicator = document.getElementById('scroll-indicator');
+
+            // Fade out show-more-btn smoothly
+            if (showMoreBtn) {
+                // Wait a bit to ensure page is fully loaded
+                setTimeout(() => {
+                    // Remove any inline styles that might interfere
+                    showMoreBtn.style.visibility = 'visible';
+                    
+                    // Ensure transition is set before animating
+                    showMoreBtn.style.transition = 'opacity 2.8s ease-out, transform 2.8s ease-out';
+                    showMoreBtn.style.willChange = 'opacity, transform';
+                    
+                    // Force a reflow to ensure transition is applied
+                    void showMoreBtn.offsetHeight;
+                    
+                    // Small delay to ensure transition is ready
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            // Now apply the fade out - preserve translateX and add translateY
+                            showMoreBtn.style.opacity = '0';
+                            showMoreBtn.style.transform = 'translateX(0) translateY(20px)';
+                            
+                            // Hide after animation completes
+                            setTimeout(() => {
+                                showMoreBtn.style.display = 'none';
+                            }, 800);
+                        });
+                    });
+                }, 300);
+            }
+
+            // Fade out scroll indicator sidebar smoothly
+            if (scrollIndicatorSidebar) {
+                setTimeout(() => {
+                    scrollIndicatorSidebar.style.transition = 'opacity 0.6s ease-out';
+                    scrollIndicatorSidebar.style.opacity = '0';
+                    setTimeout(() => {
+                        scrollIndicatorSidebar.style.display = 'none';
+                    }, 600);
+                }, 200);
+            }
+
+            // Show back arrow
+            if (backArrow) {
+                setTimeout(() => {
+                    backArrow.style.display = 'flex';
+                    backArrow.style.opacity = '0';
+                    backArrow.style.transform = 'translateX(-30px)';
+                    // Force a reflow to ensure the display change is applied
+                    void backArrow.offsetHeight;
+                    setTimeout(() => {
+                        backArrow.classList.add('show');
+                    }, 50);
+                }, 200);
+            }
+            
+            // Show scroll indicator
+            if (scrollIndicator) {
+                setTimeout(() => {
+                    scrollIndicator.style.display = 'block';
+                    scrollIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        scrollIndicator.classList.add('show');
+                    }, 50);
+                }, 800);
+            }
+        });
+    </script>
+</body>
+</html>
+

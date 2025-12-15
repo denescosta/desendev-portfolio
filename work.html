@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-page="work">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Disable scroll-snap completely on work page */
+        html {
+            scroll-snap-type: none !important;
+            -webkit-scroll-snap-type: none !important;
+        }
+        
+        body.work-page-body {
+            scroll-snap-type: none !important;
+            -webkit-scroll-snap-type: none !important;
+        }
+        
+        .work-page * {
+            scroll-snap-align: none !important;
+            scroll-snap-stop: normal !important;
+            -webkit-scroll-snap-align: none !important;
+        }
+        
+        /* Disable all animations and transitions on work page */
+        .work-page *,
+        .work-page *::before,
+        .work-page *::after {
+            animation-duration: 0s !important;
+            animation-delay: 0s !important;
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+        }
+        
+        /* Ensure work slide appears immediately */
+        .work-intro .work-slide {
+            animation: none !important;
+        }
+        
+        /* Ensure all slide-in elements are visible immediately */
+        .work-intro .slide-in-left,
+        .work-intro .slide-in-right {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+        
+        /* Prevent scrollbar from appearing in work-slide-left */
+        .work-intro .work-slide-left {
+            overflow-y: visible !important;
+            overflow-x: hidden !important;
+            min-height: auto !important;
+            max-height: none !important;
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+        }
+        
+        /* Ensure work-slide-content doesn't cause overflow */
+        .work-intro .work-slide-content {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+        
+        /* Prevent any scrollbar flash during transitions */
+        .work-intro .works-slider,
+        .work-intro .slider-wrapper {
+            overflow: visible !important;
+        }
+        
+        /* Prevent button from causing overflow when it changes */
+        .work-intro .show-more-btn {
+            min-height: 48px !important;
+            height: auto !important;
+            white-space: nowrap !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Ensure work-slide-left has enough space */
+        .work-intro .work-slide-left {
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+        }
+    </style>
+</head>
+<body class="work-page-body">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-link nav-link-left">DESENDEV</a>
+                <a href="index.html#works" class="nav-link">WORKS</a>
+                <a href="about.html" class="nav-link">ABOUT ME</a>
+                <a href="index.html#contact" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator Sidebar - Will fade out smoothly -->
+    <div class="scroll-indicator-sidebar" id="page-scroll-indicator">
+        <div class="scroll-indicator-dot" data-section="home"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot active" data-section="works"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="about"></div>
+        <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator-dot" data-section="contact"></div>
+    </div>
+
+    <!-- Work Page Content -->
+    <main class="work-page">
+        <!-- Initial Section - Same as work slide -->
+        <section class="work-intro section" id="work-intro">
+            <a href="#" class="back-arrow" id="back-arrow" style="display: none;" onclick="handleBackArrowClick(event)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <div class="works-container">
+                <h2 class="section-title" id="work-section-title" style="opacity: 1; transform: translateX(0);">Meus Trabalhos</h2>
+                <div class="works-slider">
+                    <div class="slider-wrapper">
+                        <div class="work-slide active" id="work-intro-slide">
+                            <div class="work-slide-content" id="work-intro-content">
+                                <div class="work-slide-left">
+                                    <h3 class="work-title" id="work-intro-title">Título do Projeto</h3>
+                                    <p class="work-subtitle" id="work-intro-subtitle">Descrição do projeto</p>
+                                    <div class="work-tags" id="work-intro-tags">
+                                        <!-- Tags serão inseridas via JavaScript -->
+                                    </div>
+                                    <a href="#" class="show-more-btn work-visit-site" id="intro-visit-site" style="opacity: 1; transform: translateX(0px); visibility: visible;">SHOW ME MORE</a>
+                                </div>
+                                <div class="work-slide-right">
+                                    <div class="work-image-container" id="work-intro-image">
+                                        <!-- Imagem será inserida via JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down-indicator" id="scroll-indicator" style="display: none;">
+                <span>SCROLL DOWN</span>
+            </div>
+        </section>
+
+        <!-- Project Details Sections -->
+        <!-- Section 01 - PROJECT OVERVIEW -->
+        <section class="work-section" id="project-overview">
+            <div class="work-section-content">
+                <h2 class="work-section-title">PROJECT OVERVIEW</h2>
+                <div class="work-section-text" id="project-overview-content">
+                    <!-- Conteúdo será inserido via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02 - TECHNOLOGIES -->
+        <section class="work-section" id="technologies">
+            <div class="work-section-content">
+                <h2 class="work-section-title">TECHNOLOGIES</h2>
+                <div class="work-section-text" id="technologies-content">
+                    <!-- Conteúdo será inserido via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 03 - FEATURES -->
+        <section class="work-section" id="features">
+            <div class="work-section-content">
+                <h2 class="work-section-title">FEATURES</h2>
+                <div class="work-section-text" id="features-content">
+                    <!-- Conteúdo será inserido via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Projects data
+        const projectsData = {
+            'setyou': {
+                title: 'SetYou',
+                subtitle: 'Loja virtual completa hospedada no Shopify',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Vue', 'React'],
+                image: 'images/mockup-setyou.png',
+                visitUrl: 'https://www.setyou.com.br',
+                expandedTitle: 'Loja Virtual',
+                overview: {
+                    text: 'Desenvolvimento completo do front-end do site da SetYou, o primeiro laboratório de saúde e performance do Brasil. O projeto foi desenvolvido como uma loja virtual completa hospedada na plataforma Shopify, proporcionando uma experiência de compra completa e personalizada para os clientes.',
+                    images: [
+                        'images/setyou-overview.png'
+                        // 'images/setyou-overview2.png'
+                    ]
+                },
+                technologies: {
+                    text: 'Tecnologias utilizadas: HTML5, CSS3, JavaScript (ES6+), Vue.js para componentes interativos, React para partes específicas da interface, e integração completa com a plataforma Shopify. O desenvolvimento focou em performance, responsividade e experiência do usuário otimizada.',
+                    images: [
+                        'images/setyou-technologies.png'
+                    ]
+                },
+                features: {
+                    text: 'Principais funcionalidades: Sistema completo de e-commerce com carrinho de compras, checkout integrado, personalização de produtos, sistema de testes online, integração com APIs do Shopify, design responsivo para todos os dispositivos, animações e interações fluidas, otimização de performance e SEO.',
+                    images: [
+                        'images/setyou-features.png'
+                    ]
+                }
+            },
+            'vumbora': {
+                title: 'Vumbora',
+                subtitle: 'Passeios turísticos',
+                tags: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+                image: 'images/mockup-vumbora.png',
+                visitUrl: 'https://www.vumborapassear.com.br',
+                overview: {
+                    text: 'Desenvolvimento completo do zero de uma página para venda de passeios turísticos em Natal, Rio Grande do Norte. O projeto foi criado com foco em conversão através de cliques para WhatsApp, oferecendo uma experiência visual atrativa e informações claras sobre os passeios disponíveis.',
+                    images: [
+                        // Adicione imagens que aparecerão após o texto do overview
+                        'images/vumbora-overview.png'
+                    ]
+                },
+                technologies: {
+                    text: 'Tecnologias utilizadas: HTML5 semântico, CSS3 com design responsivo, JavaScript para interatividade e validações, PHP para processamento no servidor e envio de formulários. O desenvolvimento priorizou simplicidade, velocidade de carregamento e otimização para conversão.',
+                    images: [
+                        // Adicione imagens que aparecerão após o texto das tecnologias
+                         'images/vumbora-technologies.png'
+                    ]
+                },
+                features: {
+                    text: 'Principais funcionalidades: Design responsivo e otimizado para mobile, galeria de imagens dos passeios, informações detalhadas sobre cada experiência, sistema de formulários integrado, botões de contato direto via WhatsApp, design visualmente atrativo com imagens de alta qualidade, carregamento rápido e otimizado para SEO local.',
+                    images: [
+                        // Adicione imagens que aparecerão após o texto das features
+                         'images/vumbora-features.png'
+                    ]
+                }
+            },
+            'project3': {
+                title: 'Projeto 3',
+                subtitle: 'Descrição do terceiro projeto desenvolvido',
+                tags: ['Next.js', 'GraphQL', 'AWS'],
+                image: '',
+                visitUrl: '#',
+                overview: {
+                    text: 'Projeto em desenvolvimento...',
+                    images: []
+                },
+                technologies: {
+                    text: 'Tecnologias utilizadas: Next.js, GraphQL, AWS.',
+                    images: []
+                },
+                features: {
+                    text: 'Funcionalidades em desenvolvimento...',
+                    images: []
+                }
+            }
+        };
+
+        // Get project ID from URL parameter
+        function getProjectId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('project') || 'setyou';
+        }
+
+        // Check if expand parameter is present
+        function shouldExpand() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('expand') === 'true';
+        }
+
+        // Load project data
+        function loadProjectData() {
+            const projectId = getProjectId();
+            const project = projectsData[projectId] || projectsData['setyou'];
+
+            // Update title
+            document.getElementById('work-intro-title').textContent = project.title;
+            document.title = `${project.title} - Portfolio`;
+
+            // Update subtitle
+            document.getElementById('work-intro-subtitle').textContent = project.subtitle;
+
+            // Update tags
+            const tagsContainer = document.getElementById('work-intro-tags');
+            tagsContainer.innerHTML = '';
+            project.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'work-tag';
+                tagElement.textContent = tag;
+                tagsContainer.appendChild(tagElement);
+            });
+
+            // Update image
+            const imageContainer = document.getElementById('work-intro-image');
+            if (project.image) {
+                imageContainer.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
+                imageContainer.className = 'work-image-container';
+            } else {
+                imageContainer.className = 'work-image-placeholder';
+                imageContainer.innerHTML = `<span>Imagem do Projeto</span>`;
+            }
+
+            // Initialize button as "Visit Site" with project URL
+            const visitSiteBtn = document.getElementById('intro-visit-site');
+            if (visitSiteBtn) {
+                if (project.visitUrl && project.visitUrl !== '#') {
+                    visitSiteBtn.textContent = 'Visit Site';
+                    visitSiteBtn.href = project.visitUrl;
+                    visitSiteBtn.target = '_blank';
+                    visitSiteBtn.rel = 'noopener noreferrer';
+                } else {
+                    visitSiteBtn.textContent = 'SHOW ME MORE';
+                    visitSiteBtn.href = '#';
+                    visitSiteBtn.removeAttribute('target');
+                    visitSiteBtn.removeAttribute('rel');
+                }
+            }
+
+            // Update content sections with text and images
+            updateSectionContent('project-overview-content', project.overview, project.title);
+            updateSectionContent('technologies-content', project.technologies, project.title);
+            updateSectionContent('features-content', project.features, project.title);
+        }
+        
+        // Function to update section content with text and images
+        function updateSectionContent(elementId, sectionData, projectTitle) {
+            const contentElement = document.getElementById(elementId);
+            if (!contentElement) return;
+            
+            // Handle both old format (string) and new format (object)
+            let text = '';
+            let images = [];
+            
+            if (typeof sectionData === 'string') {
+                text = sectionData;
+                images = [];
+            } else if (sectionData && typeof sectionData === 'object') {
+                text = sectionData.text || '';
+                images = sectionData.images || [];
+            }
+            
+            let html = `<p>${text}</p>`;
+            
+            // Add images after the text
+            if (images && images.length > 0) {
+                images.forEach((imageUrl, index) => {
+                    html += `
+                        <div class="work-section-image">
+                            <img src="${imageUrl}" alt="${projectTitle} - Imagem ${index + 1}" loading="lazy">
+                        </div>
+                    `;
+                });
+            }
+            
+            contentElement.innerHTML = html;
+        }
+
+        // Handle back arrow click
+        function handleBackArrowClick(event) {
+            event.preventDefault();
+            const projectId = getProjectId();
+            window.location.href = `index.html#works-${projectId}`;
+        }
+
+        // Handle show more button click
+        function handleShowMoreClick() {
+            const projectId = getProjectId();
+            const project = projectsData[projectId] || projectsData['setyou'];
+            const sectionTitle = document.getElementById('work-section-title');
+            const showMoreBtn = document.getElementById('intro-visit-site');
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            const scrollIndicatorSidebar = document.getElementById('page-scroll-indicator');
+            const workSlideLeft = document.querySelector('.work-intro .work-slide-left');
+            
+            // Prevent scrollbar from appearing during the change
+            if (workSlideLeft) {
+                workSlideLeft.style.overflowY = 'visible';
+                workSlideLeft.style.overflowX = 'hidden';
+                // Ensure button has space without causing overflow
+                workSlideLeft.style.paddingBottom = '0';
+                workSlideLeft.style.marginBottom = '0';
+            }
+            
+            // Change title from "Meus Trabalhos" to project-specific expanded title
+            if (sectionTitle) {
+                const expandedTitle = project.expandedTitle || project.subtitle;
+                sectionTitle.textContent = expandedTitle;
+            }
+            
+            // Change button from "SHOW ME MORE" to "Visit Site" with link
+            // Always update the button, regardless of current state
+            if (showMoreBtn) {
+                // Prevent button from causing layout shift
+                showMoreBtn.style.minHeight = '48px';
+                showMoreBtn.style.height = 'auto';
+                showMoreBtn.style.whiteSpace = 'nowrap';
+                
+                if (project.visitUrl && project.visitUrl !== '#') {
+                    showMoreBtn.textContent = 'Visit Site';
+                    showMoreBtn.href = project.visitUrl;
+                    showMoreBtn.target = '_blank';
+                    showMoreBtn.rel = 'noopener noreferrer';
+                } else {
+                    // If no visitUrl, keep as SHOW ME MORE
+                    if (showMoreBtn.textContent.trim() !== 'SHOW ME MORE') {
+                        showMoreBtn.textContent = 'SHOW ME MORE';
+                    }
+                }
+            }
+            
+            // Hide scroll indicator sidebar (seletor de slides) immediately
+            if (scrollIndicatorSidebar) {
+                scrollIndicatorSidebar.style.display = 'none';
+            }
+            
+            // Show scroll down indicator immediately
+            if (scrollIndicator) {
+                scrollIndicator.style.display = 'block';
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.classList.add('show');
+            }
+        }
+
+        // Transition animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load project data
+            loadProjectData();
+
+            const introSection = document.getElementById('work-intro');
+            const showMoreBtn = document.getElementById('intro-visit-site');
+            const scrollIndicatorSidebar = document.getElementById('page-scroll-indicator');
+            const backArrow = document.getElementById('back-arrow');
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            const sectionTitle = document.getElementById('work-section-title');
+
+            // Make all elements visible immediately (no animations)
+            const workSlideLeft = document.querySelector('.work-slide-left');
+            const workSlideRight = document.querySelector('.work-slide-right');
+            const workTitle = document.getElementById('work-intro-title');
+            const workSubtitle = document.getElementById('work-intro-subtitle');
+            const workTags = document.getElementById('work-intro-tags');
+            
+            // Remove animation classes and make elements visible immediately
+            if (workSlideLeft) {
+                workSlideLeft.classList.remove('slide-in-left');
+                workSlideLeft.style.opacity = '1';
+                workSlideLeft.style.transform = 'translateX(0)';
+            }
+            if (workSlideRight) {
+                workSlideRight.classList.remove('slide-in-right');
+                workSlideRight.style.opacity = '1';
+                workSlideRight.style.transform = 'translateX(0)';
+            }
+            if (workTitle) {
+                workTitle.style.opacity = '1';
+                workTitle.style.transform = 'translateX(0)';
+            }
+            if (workSubtitle) {
+                workSubtitle.style.opacity = '1';
+                workSubtitle.style.transform = 'translateX(0)';
+            }
+            if (workTags) {
+                workTags.style.opacity = '1';
+                workTags.style.transform = 'translateX(0)';
+            }
+            if (showMoreBtn) {
+                showMoreBtn.style.opacity = '1';
+                showMoreBtn.style.transform = 'translateX(0)';
+                showMoreBtn.style.visibility = 'visible';
+            }
+
+            // Check if should expand automatically (when coming from index.html)
+            if (shouldExpand()) {
+                // Execute transformation immediately
+                handleShowMoreClick();
+                
+                // Ensure button is updated (double check after a brief delay)
+                setTimeout(() => {
+                    const btn = document.getElementById('intro-visit-site');
+                    const projectId = getProjectId();
+                    const project = projectsData[projectId] || projectsData['setyou'];
+                    if (btn && project.visitUrl && project.visitUrl !== '#') {
+                        if (btn.textContent.trim() !== 'Visit Site') {
+                            btn.textContent = 'Visit Site';
+                            btn.href = project.visitUrl;
+                            btn.target = '_blank';
+                            btn.rel = 'noopener noreferrer';
+                        }
+                    }
+                }, 50);
+            } else {
+                // Add click event listener to show more button (only if not expanded)
+                if (showMoreBtn) {
+                    showMoreBtn.addEventListener('click', function(e) {
+                        // Only handle if button still says "SHOW ME MORE"
+                        if (this.textContent.trim() === 'SHOW ME MORE') {
+                            e.preventDefault();
+                            handleShowMoreClick();
+                        }
+                        // If it's already "Visit Site", let the default link behavior work
+                    });
+                }
+            }
+
+            // Show back arrow immediately (no animation)
+            if (backArrow) {
+                backArrow.style.display = 'flex';
+                backArrow.style.opacity = '1';
+                backArrow.style.transform = 'translateX(0)';
+                backArrow.classList.add('show');
+            }
+
+            // Show scroll indicator sidebar immediately if not expanded (no animation)
+            if (scrollIndicatorSidebar && !shouldExpand()) {
+                scrollIndicatorSidebar.style.display = 'block';
+                scrollIndicatorSidebar.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos temporários
+*.log
+*.tmp
+*.temp
+
+# Arquivos de ambiente (se houver)
+.env
+.env.local
+
+# Arquivos de build (se houver no futuro)
+dist/
+build/
+
